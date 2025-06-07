@@ -13,12 +13,12 @@ class SettingsController extends State<SettingsPage> with ControllerLoggy {
   @override
   void initState() {
     super.initState();
-    loggy.info('SettingsController initialized');
+    loggy.debug('SettingsController initialized');
   }
 
   @override
   void dispose() {
-    loggy.info('SettingsController disposed');
+    loggy.debug('SettingsController disposed');
     super.dispose();
   }
 

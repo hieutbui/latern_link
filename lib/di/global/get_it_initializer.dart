@@ -16,16 +16,16 @@ class GetItInitializer with GetItLoggy {
   void setUp() {
     bindingGlobal();
 
-    loggy.info('setUp(): Setup successful');
+    loggy.debug('setUp(): Setup successful');
   }
 
   void bindingGlobal() {
     getIt.registerSingleton(ResponsiveUtils());
 
-    loggy.info('bindingGlobal(): bind successful');
+    loggy.debug('bindingGlobal(): bind successful');
   }
 
   void bindingServices() {
-    loggy.info('bindingServices(): bind successful');
+    loggy.debug('bindingServices(): bind successful');
   }
 }

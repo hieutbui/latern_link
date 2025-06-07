@@ -22,11 +22,11 @@ class AppRoutes {
       <NavigationDestination>[
         NavigationDestination(
           icon: const Icon(Icons.home_outlined),
-          label: AppPaths.home.label,
+          label: AppPaths.home.label(context),
         ),
         NavigationDestination(
           icon: const Icon(Icons.settings_outlined),
-          label: AppPaths.settings.label,
+          label: AppPaths.settings.label(context),
         ),
       ];
 
@@ -53,7 +53,7 @@ class AppRoutes {
             pageBuilder: (context, state) => defaultPageBuilder(
               context,
               const HomePage(),
-              name: AppPaths.home.label,
+              name: AppPaths.home.label(context),
             ),
           ),
           GoRoute(
@@ -61,7 +61,7 @@ class AppRoutes {
             pageBuilder: (context, state) => defaultPageBuilder(
               context,
               const SettingsPage(),
-              name: AppPaths.settings.label,
+              name: AppPaths.settings.label(context),
             ),
           ),
         ],

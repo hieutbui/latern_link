@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "homePageTitle": "Home",
+  "@homePageTitle": {
+    "description": "Title for the home page",
+    "type": "text"
+  },
+  "settingsPageTitle": "Settings",
+  "@settingsPageTitle": {
+    "description": "Title for the settings page",
+    "type": "text"
+  }
+}

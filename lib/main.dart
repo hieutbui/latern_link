@@ -3,6 +3,7 @@ import 'package:latern_link/config/app_config.dart';
 import 'package:latern_link/config/app_routes.dart';
 import 'package:latern_link/config/themes.dart';
 import 'package:latern_link/di/global/get_it_initializer.dart';
+import 'package:latern_link/l10n/app_localizations/app_localizations.dart';
 import 'package:latern_link/src/rust/frb_generated.dart';
 import 'package:loggy/loggy.dart';
 
@@ -27,6 +28,8 @@ class LaternLinkApp extends StatelessWidget {
       title: AppConfig.title,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) {
         return Scaffold(body: child);
       },

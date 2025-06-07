@@ -13,12 +13,12 @@ class HomeController extends State<HomePage> with ControllerLoggy {
   @override
   void initState() {
     super.initState();
-    loggy.info('HomeController initialized');
+    loggy.debug('HomeController initialized');
   }
 
   @override
   void dispose() {
-    loggy.info('HomeController disposed');
+    loggy.debug('HomeController disposed');
     super.dispose();
   }
 
