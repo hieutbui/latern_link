@@ -4,11 +4,11 @@ import 'package:latern_link/src/rust/frb_generated.dart';
 
 Future<void> main() async {
   await RustLib.init();
-  runApp(const MyApp());
+  runApp(const LaternLinkApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class LaternLinkApp extends StatelessWidget {
+  const LaternLinkApp({super.key});
 
   @override
   Widget build(BuildContext context) {
