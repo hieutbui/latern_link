@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:latern_link/data/localizations/language_cache_manager.dart';
 import 'package:latern_link/utils/mixins/logging_mixin.dart';
 import 'package:latern_link/utils/responsive.dart';
+import 'package:latern_link/utils/secure_storage.dart';
 
 final getIt = GetIt.instance;
 
@@ -16,16 +18,25 @@ class GetItInitializer with GetItLoggy {
   void setUp() {
     bindingGlobal();
 
-    loggy.info('setUp(): Setup successful');
+    loggy.debug('setUp(): Setup successful');
   }
 
   void bindingGlobal() {
     getIt.registerSingleton(ResponsiveUtils());
+    getIt.registerSingleton(Store());
 
-    loggy.info('bindingGlobal(): bind successful');
+    bindingCachingManager();
+
+    loggy.debug('bindingGlobal(): bind successful');
+  }
+
+  void bindingCachingManager() {
+    getIt.registerFactory<LanguageCacheManager>(() => LanguageCacheManager());
+
+    loggy.debug('bindingCachingManager(): bind successful');
   }
 
   void bindingServices() {
-    loggy.info('bindingServices(): bind successful');
+    loggy.debug('bindingServices(): bind successful');
   }
 }
