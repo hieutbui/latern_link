@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latern_link/config/localizations/localization_service.dart';
 import 'package:latern_link/pages/home/home_view.dart';
 import 'package:latern_link/utils/mixins/logging_mixin.dart';
 
@@ -13,13 +14,25 @@ class HomeController extends State<HomePage> with ControllerLoggy {
   @override
   void initState() {
     super.initState();
-    loggy.info('HomeController initialized');
+    loggy.debug('HomeController initialized');
   }
 
   @override
   void dispose() {
-    loggy.info('HomeController disposed');
+    loggy.debug('HomeController disposed');
     super.dispose();
+  }
+
+  void onChangeVNLanguage() {
+    loggy.debug('Button pressed');
+
+    LocalizationService.changeLocale(context, 'vi');
+  }
+
+  void onChangeENLanguage() {
+    loggy.debug('Button pressed');
+
+    LocalizationService.changeLocale(context, 'en');
   }
 
   @override

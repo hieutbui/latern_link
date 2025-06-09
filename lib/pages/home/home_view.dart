@@ -9,11 +9,20 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Home View',
-          style: Theme.of(context).textTheme.displayLarge,
-        ),
+      body: Column(
+        children: [
+          Text('Home View', style: Theme.of(context).textTheme.displayLarge),
+          const Spacer(),
+          ElevatedButton(
+            onPressed: controller.onChangeVNLanguage,
+            child: const Text('Change VN Language'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: controller.onChangeENLanguage,
+            child: const Text('Change EN Language'),
+          ),
+        ],
       ),
     );
   }

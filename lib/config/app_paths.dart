@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+import 'package:latern_link/l10n/app_localizations/app_localizations.dart';
+
 enum AppPaths {
   home,
   settings;
@@ -20,13 +23,12 @@ enum AppPaths {
     }
   }
 
-  //TODO: Handle localization properly
-  String get label {
+  String label(BuildContext context) {
     switch (this) {
       case AppPaths.home:
-        return 'Home';
+        return AppLocalizations.of(context)!.homePageTitle;
       case AppPaths.settings:
-        return 'Settings';
+        return AppLocalizations.of(context)!.settingsPageTitle;
     }
   }
 }
