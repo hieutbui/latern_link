@@ -17,7 +17,7 @@ enum AppPaths {
   String get navigationPath {
     switch (this) {
       case AppPaths.home:
-        return '/home';
+        return '/';
       case AppPaths.settings:
         return '/settings';
     }
