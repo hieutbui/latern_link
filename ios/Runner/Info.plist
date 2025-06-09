@@ -17,7 +17,7 @@
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
-		<string>Vietnamese</string>
+		<string>vi</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>latern_link</string>
