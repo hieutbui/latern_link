@@ -14,12 +14,12 @@ class HomeView extends StatelessWidget {
           Text('Home View', style: Theme.of(context).textTheme.displayLarge),
           const Spacer(),
           ElevatedButton(
-            onPressed: controller.onChangeVNLanguage,
+            onPressed: () => controller.changeLanguage(Locale('vi')),
             child: const Text('Change VN Language'),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: controller.onChangeENLanguage,
+            onPressed: () => controller.changeLanguage(Locale('en')),
             child: const Text('Change EN Language'),
           ),
         ],

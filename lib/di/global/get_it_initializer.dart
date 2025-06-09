@@ -1,5 +1,10 @@
 import 'package:get_it/get_it.dart';
+import 'package:latern_link/data/datasource/localizations_datasource.dart';
+import 'package:latern_link/data/datasource_impl/localizations_datasource_impl.dart';
 import 'package:latern_link/data/localizations/language_cache_manager.dart';
+import 'package:latern_link/data/repository/localizations_repository_impl.dart';
+import 'package:latern_link/domain/repository/localizations_repository.dart';
+import 'package:latern_link/domain/usecase/save_language_interactor.dart';
 import 'package:latern_link/utils/mixins/logging_mixin.dart';
 import 'package:latern_link/utils/responsive.dart';
 import 'package:latern_link/utils/secure_storage.dart';
@@ -17,6 +22,10 @@ class GetItInitializer with GetItLoggy {
 
   void setUp() {
     bindingGlobal();
+    bindingDatasource();
+    bindingDataSourceImpl();
+    bindingRepository();
+    bindingInteractor();
 
     loggy.debug('setUp(): Setup successful');
   }
@@ -36,7 +45,32 @@ class GetItInitializer with GetItLoggy {
     loggy.debug('bindingCachingManager(): bind successful');
   }
 
-  void bindingServices() {
-    loggy.debug('bindingServices(): bind successful');
+  void bindingDatasource() {
+    getIt.registerFactory<LocalizationsDatasource>(
+      () => LocalizationsDatasourceImpl(getIt.get<LanguageCacheManager>()),
+    );
+
+    loggy.debug('bindingDatasource(): bind successful');
+  }
+
+  void bindingDataSourceImpl() {
+    getIt.registerFactory(
+      () => LocalizationsDatasourceImpl(getIt.get<LanguageCacheManager>()),
+    );
+
+    loggy.debug('bindingDataSourceImpl(): bind successful');
+  }
+
+  void bindingRepository() {
+    getIt.registerFactory<LocalizationsRepository>(
+      () =>
+          LocalizationsRepositoryImpl(getIt.get<LocalizationsDatasourceImpl>()),
+    );
+  }
+
+  void bindingInteractor() {
+    getIt.registerLazySingleton<SaveLanguageInteractor>(
+      () => SaveLanguageInteractor(getIt.get<LocalizationsRepository>()),
+    );
   }
 }
