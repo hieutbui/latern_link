@@ -23,3 +23,9 @@ Future<bool> checkFullDiskAccessPermission() =>
 
 Future<void> requestFullDiskAccessPermission() =>
     RustLib.instance.api.crateApiRequestFullDiskAccessPermission();
+
+Future<bool> checkWindowsAdmin() =>
+    RustLib.instance.api.crateApiCheckWindowsAdmin();
+
+Future<void> requestWindowsAdmin() =>
+    RustLib.instance.api.crateApiRequestWindowsAdmin();

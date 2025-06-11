@@ -52,6 +52,16 @@ class HomeView extends StatelessWidget {
             onPressed: () => controller.requestFullDiskPermission(),
             child: const Text('Request Full Disk Access Permission'),
           ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () => controller.isWindowsAdmin(),
+            child: const Text('Check Windows Admin Status'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () => controller.requestWindowsAdminPrivileges(),
+            child: const Text('Request Windows Admin Privileges'),
+          ),
           const Spacer(),
         ],
       ),

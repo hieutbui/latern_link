@@ -49,3 +49,12 @@ pub async fn request_full_disk_access_permission() {
         .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles")
         .spawn();
 }
+
+pub fn is_windows_admin() -> bool {
+    // This function is not applicable for macOS, so we return false.
+    false
+}
+
+pub fn request_windows_admin() {
+    // This function is not applicable for macOS, so it can be left empty or return an error.
+}

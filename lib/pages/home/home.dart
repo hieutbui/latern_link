@@ -116,6 +116,20 @@ class HomeController extends State<HomePage> with ControllerLoggy {
     loggy.debug('Full disk access permission request completed');
   }
 
+  Future<bool> isWindowsAdmin() async {
+    loggy.debug('Checking Windows admin status');
+    final isAdmin = await checkWindowsAdmin();
+    loggy.debug('Windows admin status: $isAdmin');
+
+    return isAdmin;
+  }
+
+  Future<void> requestWindowsAdminPrivileges() async {
+    loggy.debug('Requesting Windows admin privileges');
+    await requestWindowsAdmin();
+    loggy.debug('Windows admin request completed');
+  }
+
   @override
   Widget build(BuildContext context) => HomeView(controller: this);
 }
