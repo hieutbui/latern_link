@@ -30,3 +30,13 @@ pub async fn check_full_disk_access_permission() -> bool {
 pub async fn request_full_disk_access_permission() {
     platform::request_full_disk_access_permission().await
 }
+
+#[frb]
+pub fn check_windows_admin() -> bool {
+    platform::is_windows_admin()
+}
+
+#[frb]
+pub fn request_windows_admin() {
+    platform::request_windows_admin()
+}

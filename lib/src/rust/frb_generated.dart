@@ -62,7 +62,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.10.0';
 
   @override
-  int get rustContentHash => -1067782154;
+  int get rustContentHash => 1584355386;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -79,11 +79,15 @@ abstract class RustLibApi extends BaseApi {
 
   Future<bool> crateApiCheckScreenRecordingPermission();
 
+  Future<bool> crateApiCheckWindowsAdmin();
+
   Future<void> crateApiRequestAccessibilityPermission();
 
   Future<void> crateApiRequestFullDiskAccessPermission();
 
   Future<void> crateApiRequestScreenRecordingPermission();
+
+  Future<void> crateApiRequestWindowsAdmin();
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -185,7 +189,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiRequestAccessibilityPermission() {
+  Future<bool> crateApiCheckWindowsAdmin() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -194,6 +198,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             generalizedFrbRustBinding,
             serializer,
             funcId: 4,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_bool,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiCheckWindowsAdminConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateApiCheckWindowsAdminConstMeta =>
+      const TaskConstMeta(debugName: "check_windows_admin", argNames: []);
+
+  @override
+  Future<void> crateApiRequestAccessibilityPermission() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 5,
             port: port_,
           );
         },
@@ -223,7 +254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 5,
+            funcId: 6,
             port: port_,
           );
         },
@@ -253,7 +284,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 6,
+            funcId: 7,
             port: port_,
           );
         },
@@ -273,6 +304,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "request_screen_recording_permission",
         argNames: [],
       );
+
+  @override
+  Future<void> crateApiRequestWindowsAdmin() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 8,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiRequestWindowsAdminConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateApiRequestWindowsAdminConstMeta =>
+      const TaskConstMeta(debugName: "request_windows_admin", argNames: []);
 
   @protected
   bool dco_decode_bool(dynamic raw) {
